@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Inventory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <div class="container">
+        <h1>Inventory Items</h1>
+
+        {% if inventory is not empty %}
+            <p>Here are all your items:</p>
+                {% for item in inventory %}
+                <div class="jumbotron" >
+                    <ul>
+                        <li>Description: {{ item.getDescription }}</li>
+                        <li>Price: {{ item.getPrice }}</li>
+                        <li>Item id: {{ item.getId }}</li>
+                    </ul>
+                </div>
+                {% endfor %}
+        {% endif %}
+
+        <form action='/inventory' method='post'>
+           <label for='description'>Item Description</label>
+           <input id='description' name='description' type='text'>
+           <label for='price'>Item Price</label>
+           <input id='price' name='price' type='text'>
+
+           <button type='submit'>Add item</button>
+       </form>
+       <form action='/delete_items' method='post'>
+           <button type='submit'>Clear</button>
+       </form>
+    </div>
+</body>
+</html>
