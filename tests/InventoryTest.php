@@ -31,6 +31,18 @@
             $this->assertEquals(array("pokemonster", 5), $result);
         }
 
+        function test_save()
+        {
+            $input_price = 5;
+            $input_description = "pokemonster";
+            $newInventory = new Inventory($input_description, $input_price);
+
+            $newInventory->save();
+
+            $result = Inventory::getAll();
+            $this->assertEquals($newInventory, $result[0]);
+        }
+
 
     }
  ?>
