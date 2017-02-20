@@ -63,5 +63,20 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function find($search_id)
+        {
+            $found_stuff = null;
+            $stuffs = Inventory::getAll();
+            foreach($stuffs as $stuff)
+            {
+                $stuff_id = $stuff->getId();
+                if($stuff_id == $search_id)
+                {
+                    $found_stuff = $stuff;
+                }
+            }
+            return $found_stuff;
+        }
+
     }
 ?>
